@@ -370,6 +370,12 @@ public:
 
 	void setScratchDirectory(FileName _fn_scratch, bool do_reuse_scratch, int verb=0);
 
+	// Assign the per-optics-group scratch-file index to every particle.
+	// Duplicate source images (e.g. after symmetry expansion) share one cached
+	// file and therefore one index. The result depends only on particle order,
+	// so every MPI rank computes the same mapping.
+	void assignScratchFileIndices();
+
 	// Wipe the generic scratch directory clean
 	void deleteDataOnScratch();
 
